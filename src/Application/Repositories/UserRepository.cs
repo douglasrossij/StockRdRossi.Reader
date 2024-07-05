@@ -20,8 +20,8 @@ namespace Application.Repositories
             return students;
         }
 
-        public User? GetUserById(long id) => DatabaseContext.Users.SingleOrDefault(u => u.Id == id)!;
+        public User GetUserById(long id) => DatabaseContext.Users.SingleOrDefault(u => u.Id == id)!;
 
-        public User? GetUserByUsername(string username) => DatabaseContext.Users.SingleOrDefault(user => user.UserName.ToUpper() == username.ToUpper())!;
+        public User GetUserByUsername(string username) => DatabaseContext.Users.SingleOrDefault(user => user.UserName.ToUpper() == username.ToUpper())!;
     }
 }
