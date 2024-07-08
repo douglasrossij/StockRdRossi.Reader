@@ -16,30 +16,30 @@ namespace Application.Repositories.Mapping
             builder.Property(m => m.Id).UseIdentityColumn().ValueGeneratedOnAdd();
 
             //Properties
-            builder.Property(u => u.Name)
+            builder.Property(m => m.Name)
                 .IsRequired()
                 .HasColumnName("Name")
                 .HasColumnType("VARCHAR")
                 .HasMaxLength(150);
             
-            builder.Property(u => u.Type)
+            builder.Property(m => m.Type)
                 .IsRequired()
                 .HasColumnName("MaterialType")
                 .HasColumnType("VARCHAR")
                 .HasMaxLength(50);
 
-            builder.Property(u => u.Notify)
+            builder.Property(m => m.Notify)
                 .IsRequired()
                 .HasColumnName("Notify")
                 .HasColumnType("BIT");
 
-            builder.Property(u => u.MinimumAmount)
+            builder.Property(m => m.MinimumAmount)
                 .IsRequired()
                 .HasColumnName("MinimumAmount")
                 .HasColumnType("DECIMAL")
                 .HasPrecision(20, 2);
 
-            builder.Property(u => u.CurrentAmount)
+            builder.Property(m => m.CurrentAmount)
                 .IsRequired()
                 .HasColumnName("CurrentAmount")
                 .HasColumnType("DECIMAL")

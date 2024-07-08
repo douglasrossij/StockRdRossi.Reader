@@ -18,6 +18,6 @@ namespace Application.Repositories
 
         public async Task<User?> GetUserById(long id) => await DatabaseContext.Users.FirstOrDefaultAsync(u => u.Id == id);
 
-        public async Task<User?> GetUserByUsername(string username) => await DatabaseContext.Users.FirstOrDefaultAsync(user => user.UserName.ToUpper() == username.ToUpper())!;
+        public async Task<User?> GetUserByUsername(string username) => await DatabaseContext.Users.FirstOrDefaultAsync(u => u.UserName.ToUpper() == username.ToUpper())!;
     }
 }
