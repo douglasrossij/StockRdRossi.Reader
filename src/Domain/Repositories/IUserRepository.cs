@@ -5,7 +5,7 @@ namespace Domain.Repositories
     public interface IUserRepository
     {
         public Task<IEnumerable<User>> GetAllUsers();
-        public User GetUserById(long id);
-        public User GetUserByUsername(string username);
+        public Task<User?> GetUserById(long id);
+        public Task<User?> GetUserByUsername(string username);
     }
 }

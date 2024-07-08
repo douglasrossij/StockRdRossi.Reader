@@ -7,21 +7,17 @@ namespace Application.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        public DatabaseContext DatabaseContext { get; set; }
+        private DatabaseContext DatabaseContext;
 
         public UserRepository(DatabaseContext databaseContext)
         {
             DatabaseContext = databaseContext;
         }
 
-        public async Task<IEnumerable<User>> GetAllUsers() 
-        {
-            var students = await DatabaseContext.Users.ToListAsync();
-            return students;
-        }
+        public async Task<IEnumerable<User>> GetAllUsers() => await DatabaseContext.Users.ToListAsync();
 
-        public User GetUserById(long id) => DatabaseContext.Users.SingleOrDefault(u => u.Id == id)!;
+        public async Task<User?> GetUserById(long id) => await DatabaseContext.Users.FirstOrDefaultAsync(u => u.Id == id);
 
-        public User GetUserByUsername(string username) => DatabaseContext.Users.SingleOrDefault(user => user.UserName.ToUpper() == username.ToUpper())!;
+        public async Task<User?> GetUserByUsername(string username) => await DatabaseContext.Users.FirstOrDefaultAsync(user => user.UserName.ToUpper() == username.ToUpper())!;
     }
 }
