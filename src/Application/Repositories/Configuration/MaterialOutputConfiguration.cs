@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Application.Repositories.Mapping
+namespace Application.Repositories.Configuration
 {
-    internal class MaterialOutputMapping : IEntityTypeConfiguration<MaterialOutput>
+    internal class MaterialOutputConfiguration : IEntityTypeConfiguration<MaterialOutput>
     {
         public void Configure(EntityTypeBuilder<MaterialOutput> builder)
         {

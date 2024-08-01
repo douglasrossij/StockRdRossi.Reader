@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Application.Repositories.Mapping
+namespace Application.Repositories.Configuration
 {
-    public class MaterialMapping : IEntityTypeConfiguration<Material>
+    public class MaterialConfiguration : IEntityTypeConfiguration<Material>
     {
         public void Configure(EntityTypeBuilder<Material> builder)
         {

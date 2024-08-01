@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Application.Repositories.Mapping
+namespace Application.Repositories.Configuration
 {
-    public class MaterialInputMapping : IEntityTypeConfiguration<MaterialInput>
+    public class MaterialInputConfiguration : IEntityTypeConfiguration<MaterialInput>
     {
         public void Configure(EntityTypeBuilder<MaterialInput> builder)
         {

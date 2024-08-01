@@ -14,7 +14,10 @@ namespace Application.Repositories
             DatabaseContext = databaseContext;
         }
 
-        public async Task<IEnumerable<User>> GetAllUsers() => await DatabaseContext.Users.ToListAsync();
+        public async Task<IEnumerable<User>> GetAllUsers ()
+        { 
+            return await DatabaseContext.Users.ToListAsync();
+        }
 
         public async Task<User?> GetUserById(long id) => await DatabaseContext.Users.FirstOrDefaultAsync(u => u.Id == id);
 
