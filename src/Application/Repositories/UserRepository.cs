@@ -2,6 +2,7 @@
 using Domain.Repositories;
 using Domain.Shared.Database.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Application.Repositories
 {
@@ -14,14 +15,39 @@ namespace Application.Repositories
             DatabaseContext = databaseContext;
         }
 
-        public async Task<IEnumerable<User>> GetAllUsers() 
+        public async Task<User> AddUser(User user)
         {
-            var students = await DatabaseContext.Users.ToListAsync();
-            return students;
+            var userDto = await DatabaseContext.Users.AddAsync(user).AsTask().ContinueWith(task => task.Result.Entity);
+            await DatabaseContext.SaveChangesAsync();
+            return userDto;
         }
 
-        public User? GetUserById(long id) => DatabaseContext.Users.SingleOrDefault(u => u.Id == id)!;
+        public async Task<User?> GetUserById(long id)
+        {
+            return await DatabaseContext.Users.FindAsync(id).AsTask();
+        }
 
-        public User? GetUserByUsername(string username) => DatabaseContext.Users.SingleOrDefault(user => user.UserName.ToUpper() == username.ToUpper())!;
+        public async Task<User?> GetUserByUsername(string username)
+        {
+            return await DatabaseContext.Users.FindAsync(username);
+        }
+
+        public async Task<IEnumerable<User>> GetAllUsers()
+        {
+            return await DatabaseContext.Users.ToListAsync();
+        }
+
+        public async Task<User> UpdateUser(User user)
+        {
+            var userDto = DatabaseContext.Users.Update(user).Entity;
+            await DatabaseContext.SaveChangesAsync();
+            return userDto;
+        }
+
+        public void DeleteUser(User user)
+        {
+            var customer = DatabaseContext.Users.Remove(user).Entity;
+            DatabaseContext.SaveChanges();
+        }
     }
 }
