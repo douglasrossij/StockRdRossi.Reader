@@ -21,6 +21,12 @@ namespace WebApi.Controllers
             return await _clientRepository.AddClient(client);
         }
 
+        [HttpGet("get-client-by-name")]
+        public async Task<Client?> GetByName(string name)
+        {
+            return await _clientRepository.GetClientByName(name);
+        }
+
         [HttpGet("get-clients")]
         public async Task<IEnumerable<Client>> Get()
         {

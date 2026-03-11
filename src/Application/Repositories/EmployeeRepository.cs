@@ -21,6 +21,11 @@ namespace Application.Repositories
             return employeeDto;
         }
 
+        public async Task<Employee?> GetEmployeeByName(string name)
+        {
+            return await DatabaseContext.Employees.FirstOrDefaultAsync(e => e.Name == name);
+        }
+
         public async Task<IEnumerable<Employee>> GetAllEmployees()
         {
             return await DatabaseContext.Employees.ToListAsync();

@@ -21,6 +21,12 @@ namespace WebApi.Controllers
             return await _employeeRepository.AddEmployee(employee);
         }
 
+        [HttpGet("get-employee-by-name")]
+        public async Task<Employee?> GetByName(string name)
+        {
+            return await _employeeRepository.GetEmployeeByName(name);
+        }
+
         [HttpGet("get-employees")]
         public async Task<IEnumerable<Employee>> Get()
         {

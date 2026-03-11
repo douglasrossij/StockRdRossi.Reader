@@ -21,6 +21,16 @@ namespace Application.Repositories
             return materialDto;
         }
 
+        public async Task<Material?> GetMaterialByName(string name) 
+        { 
+            return await DatabaseContext.Materials.FirstOrDefaultAsync(m => m.Name == name);
+        }
+
+        public async Task<IEnumerable<Material?>> GetMaterialsByType(string type) 
+        { 
+            return await DatabaseContext.Materials.Where(m => m.Type == type).ToListAsync();
+        }
+
         public async Task<IEnumerable<Material>> GetAllMaterials()
         {
             return await DatabaseContext.Materials.ToListAsync();
