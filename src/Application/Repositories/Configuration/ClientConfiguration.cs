@@ -22,7 +22,6 @@ namespace Application.Repositories.Configuration
 
             builder.Property(c => c.Address)
                 .HasColumnName("address")
-                .IsRequired()
                 .HasColumnType("varchar")
                 .HasMaxLength(200);
         }

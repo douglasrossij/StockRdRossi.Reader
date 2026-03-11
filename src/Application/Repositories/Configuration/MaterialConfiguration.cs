@@ -22,7 +22,6 @@ namespace Application.Repositories.Configuration
 
             builder.Property(m => m.Type)
                 .HasColumnName("type")
-                .IsRequired()
                 .HasColumnType("varchar")
                 .HasMaxLength(50);
 
@@ -36,7 +35,6 @@ namespace Application.Repositories.Configuration
 
             builder.Property(m => m.CurrentAmount)
                 .HasColumnName("current_amount")
-                .IsRequired()
                 .HasColumnType("decimal(18, 2)");
         }
    }

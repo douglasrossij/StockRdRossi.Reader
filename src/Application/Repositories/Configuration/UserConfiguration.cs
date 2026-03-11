@@ -28,7 +28,6 @@ namespace Application.Repositories.Configuration
 
             builder.Property(u => u.IsAdministrator)
                 .HasColumnName("is_administrator")
-                .IsRequired()
                 .HasColumnType("bit");
         }
     }
