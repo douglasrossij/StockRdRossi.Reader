@@ -21,16 +21,6 @@ namespace Application.Repositories
             return employeeDto;
         }
 
-        public async Task<Employee?> GetEmployeeById(long id) 
-        {
-            return await DatabaseContext.Employees.FindAsync(id).AsTask();
-        }
-
-        public async Task<Employee?> GetEmployeeByName(string name) 
-        {
-            return await DatabaseContext.Employees.FindAsync(name).AsTask();
-        }
-
         public async Task<IEnumerable<Employee>> GetAllEmployees()
         {
             return await DatabaseContext.Employees.ToListAsync();

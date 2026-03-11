@@ -22,16 +22,6 @@ namespace Application.Repositories
             return userDto;
         }
 
-        public async Task<User?> GetUserById(long id)
-        {
-            return await DatabaseContext.Users.FindAsync(id).AsTask();
-        }
-
-        public async Task<User?> GetUserByUsername(string username)
-        {
-            return await DatabaseContext.Users.FindAsync(username);
-        }
-
         public async Task<IEnumerable<User>> GetAllUsers()
         {
             return await DatabaseContext.Users.ToListAsync();

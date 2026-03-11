@@ -24,18 +24,6 @@ namespace WebApi.Controllers
             return await _userRepository.AddUser(user);
         }
 
-        [HttpGet("get-user-by-id")]
-        public async Task<User?> GetById(long id)
-        {
-            return await _userRepository.GetUserById(id);
-        }
-
-        [HttpGet("get-user-by-username")]
-        public async Task<User?> GetByUsername(string username)
-        {
-           return await _userRepository.GetUserByUsername(username);
-        }
-
         [HttpGet("get-users")]
         public async Task<IEnumerable<User>> Get()
         {

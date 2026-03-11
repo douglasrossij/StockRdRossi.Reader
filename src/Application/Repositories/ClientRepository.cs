@@ -21,16 +21,6 @@ namespace Application.Repositories
             return clientDto;
         }
 
-        public async Task<Client?> GetClientById(long id) 
-        {
-            return await DatabaseContext.Clients.FindAsync(id).AsTask();
-        }
-
-        public async Task<Client?> GetClientByName(string name)
-        {     
-            return await DatabaseContext.Clients.FindAsync(name); 
-        }
-
         public async Task<IEnumerable<Client>> GetAllClients()
         {
             return await DatabaseContext.Clients.ToListAsync();

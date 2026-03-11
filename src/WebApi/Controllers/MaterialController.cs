@@ -24,18 +24,6 @@ namespace WebApi.Controllers
             return await _materialRepository.AddMaterial(material);
         }
 
-        [HttpGet("get-material-by-id")]
-        public async Task<Material?> GetById(long id)
-        {
-            return await _materialRepository.GetMaterialById(id);
-        }
-
-        [HttpGet("get-material-by-name")]
-        public async Task<Material?> GetByName(string name)
-        {
-            return await _materialRepository.GetMaterialByName(name);
-        }
-
         [HttpGet("get-materials")]
         public async Task<IEnumerable<Material>> Get()
         {

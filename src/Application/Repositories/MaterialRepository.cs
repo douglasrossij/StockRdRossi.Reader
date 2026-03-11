@@ -21,16 +21,6 @@ namespace Application.Repositories
             return materialDto;
         }
 
-        public async Task<Material?> GetMaterialById(long id)
-        {     
-            return await DatabaseContext.Materials.FindAsync(id).AsTask(); 
-        }
-
-        public async Task<Material?> GetMaterialByName(string name) 
-        {
-            return await DatabaseContext.Materials.FindAsync(name).AsTask();
-        }
-
         public async Task<IEnumerable<Material>> GetAllMaterials()
         {
             return await DatabaseContext.Materials.ToListAsync();
