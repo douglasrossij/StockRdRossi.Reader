@@ -10,11 +10,8 @@ namespace WebApi.Controllers
     {
         private IEmployeeRepository _employeeRepository;
 
-        private readonly ILogger<EmployeeController> _logger;
-
-        public EmployeeController(ILogger<EmployeeController> logger, IEmployeeRepository employeeRepository)
+        public EmployeeController(IEmployeeRepository employeeRepository)
         {
-            _logger = logger;
             _employeeRepository = employeeRepository;
         }
 

@@ -16,7 +16,6 @@ builder.Services.AddSwaggerGen();
 builder.Services.Configure<DatabaseConfig>(builder.Configuration.GetSection("DatabaseConfig"));
 builder.Services.AddDatabaseConection();
 
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

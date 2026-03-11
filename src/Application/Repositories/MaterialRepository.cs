@@ -36,7 +36,7 @@ namespace Application.Repositories
         public void DeleteMaterial(Material material)
         {
             var materialDto = DatabaseContext.Materials.Remove(material).Entity;
-            DatabaseContext.SaveChanges();
+            DatabaseContext.SaveChangesAsync();
         }
     }
 }

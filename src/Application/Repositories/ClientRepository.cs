@@ -36,7 +36,7 @@ namespace Application.Repositories
         public void DeleteClient(Client client)
         {
             var clientDto = DatabaseContext.Clients.Remove(client).Entity;
-            DatabaseContext.SaveChanges();
+            DatabaseContext.SaveChangesAsync();
         }
     }
 }

@@ -29,7 +29,7 @@ namespace Application.Repositories.Configuration
             builder.Property(u => u.IsAdministrator)
                 .HasColumnName("is_administrator")
                 .IsRequired()
-                .HasColumnType("boolean");
+                .HasColumnType("bit");
         }
     }
 }

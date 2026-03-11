@@ -10,11 +10,8 @@ namespace WebApi.Controllers
     {
         private IClientRepository _clientRepository;
 
-        private readonly ILogger<ClientController> _logger;
-
-        public ClientController(ILogger<ClientController> logger, IClientRepository clientRepository)
+        public ClientController(IClientRepository clientRepository)
         {
-            _logger = logger;
             _clientRepository = clientRepository;
         }
 

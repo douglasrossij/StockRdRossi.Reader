@@ -2,7 +2,6 @@
 using Domain.Repositories;
 using Domain.Shared.Database.Entities;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.Metadata.Ecma335;
 
 namespace Application.Repositories
 {
@@ -37,7 +36,7 @@ namespace Application.Repositories
         public void DeleteUser(User user)
         {
             var customer = DatabaseContext.Users.Remove(user).Entity;
-            DatabaseContext.SaveChanges();
+            DatabaseContext.SaveChangesAsync();
         }
     }
 }

@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Domain.Shared.Database.Entities
+﻿namespace Domain.Shared.Database.Entities
 {
     public class User
     {

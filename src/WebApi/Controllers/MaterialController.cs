@@ -10,11 +10,8 @@ namespace WebApi.Controllers
     {
         private IMaterialRepository _materialRepository;
 
-        private readonly ILogger<MaterialController> _logger;
-
-        public MaterialController(ILogger<MaterialController> logger, IMaterialRepository materialRepository)
-        {
-            _logger = logger;
+        public MaterialController(IMaterialRepository materialRepository)
+        { 
             _materialRepository = materialRepository;
         }
 

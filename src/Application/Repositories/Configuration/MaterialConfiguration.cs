@@ -28,7 +28,7 @@ namespace Application.Repositories.Configuration
 
             builder.Property(m => m.Notify)
                 .HasColumnName("notify")
-                .HasColumnType("boolean");
+                .HasColumnType("bit");
 
             builder.Property(m => m.MinimumAmount)
                 .HasColumnName("minimum_amount")

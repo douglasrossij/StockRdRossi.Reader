@@ -36,7 +36,7 @@ namespace Application.Repositories
         public void DeleteEmployee(Employee employee)
         {
             var employeeDto = DatabaseContext.Employees.Remove(employee).Entity;
-            DatabaseContext.SaveChanges();
+            DatabaseContext.SaveChangesAsync();
         }
     }
 }
