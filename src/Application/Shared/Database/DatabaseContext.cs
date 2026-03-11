@@ -16,5 +16,11 @@ namespace Application.Shared.Database
         public DbSet<Material> Materials { get; set; } = null!;
         public DbSet<MaterialInput> MaterialInput { get; set; } = null!;
         public DbSet<MaterialOutput> MaterialOutput { get; set; } = null!;
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(DatabaseContext).Assembly);
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

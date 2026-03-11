@@ -8,7 +8,7 @@ namespace Application.Repositories.Configuration
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.ToTable("user");
+            builder.ToTable("users");
 
             builder.HasKey(u => u.Id);
             builder.Property(u => u.Id)

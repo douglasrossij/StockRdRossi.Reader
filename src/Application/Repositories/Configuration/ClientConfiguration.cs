@@ -8,7 +8,7 @@ namespace Application.Repositories.Configuration
     {
         public void Configure(EntityTypeBuilder<Client> builder)
         {
-            builder.ToTable("client");
+            builder.ToTable("clients");
 
             builder.HasKey(c => c.Id);
             builder.Property(c => c.Id)
