@@ -4,8 +4,9 @@ namespace Domain.Repositories
 {
     public interface IUserRepository
     {
+        public Task<User> AddUser(User user);
         public Task<IEnumerable<User>> GetAllUsers();
-        public User GetUserById(long id);
-        public User GetUserByUsername(string username);
+        public Task<User> UpdateUser(User user);
+        public Task DeleteUser(User user);
     }
 }

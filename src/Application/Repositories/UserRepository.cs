@@ -14,14 +14,29 @@ namespace Application.Repositories
             DatabaseContext = databaseContext;
         }
 
-        public async Task<IEnumerable<User>> GetAllUsers() 
+        public async Task<User> AddUser(User user)
         {
-            var students = await DatabaseContext.Users.ToListAsync();
-            return students;
+            var userDto = (await DatabaseContext.Users.AddAsync(user)).Entity;
+            await DatabaseContext.SaveChangesAsync();
+            return userDto;
         }
 
-        public User? GetUserById(long id) => DatabaseContext.Users.SingleOrDefault(u => u.Id == id)!;
+        public async Task<IEnumerable<User>> GetAllUsers()
+        {
+            return await DatabaseContext.Users.ToListAsync();
+        }
 
-        public User? GetUserByUsername(string username) => DatabaseContext.Users.SingleOrDefault(user => user.UserName.ToUpper() == username.ToUpper())!;
+        public async Task<User> UpdateUser(User user)
+        {
+            var userDto = DatabaseContext.Users.Update(user).Entity;
+            await DatabaseContext.SaveChangesAsync();
+            return userDto;
+        }
+
+        public async Task DeleteUser(User user)
+        {
+            DatabaseContext.Users.Remove(user);
+            await DatabaseContext.SaveChangesAsync();
+        }
     }
 }

@@ -1,0 +1,55 @@
+﻿using Domain.Repositories;
+using Domain.Shared.Database.Entities;
+using Microsoft.AspNetCore.Mvc;
+
+namespace WebApi.Controllers
+{
+    [ApiController]
+    [Route("material")]
+    public class MaterialController : ControllerBase
+    {
+        private IMaterialRepository _materialRepository;
+
+        public MaterialController(IMaterialRepository materialRepository)
+        { 
+            _materialRepository = materialRepository;
+        }
+
+        [HttpPost("add-material")]
+        public async Task<Material> Add(Material material)
+        {
+            return await _materialRepository.AddMaterial(material);
+        }
+
+        [HttpGet("get-material-by-name")]
+        public async Task<Material?> GetByName(string name)
+        {
+            return await _materialRepository.GetMaterialByName(name);
+        }
+
+        [HttpGet("get-material-by-type")]
+        public async Task<IEnumerable<Material?>> GetByType(string type)
+        {
+            return await _materialRepository.GetMaterialsByType(type);
+        }
+
+        [HttpGet("get-materials")]
+        public async Task<IEnumerable<Material>> GetAll()
+        {
+            return await _materialRepository.GetAllMaterials();
+        }
+
+        [HttpPut("update-material")]
+        public async Task<Material> Update(Material material)
+        {
+            return await _materialRepository.UpdateMaterial(material);
+        }
+
+        [HttpDelete("delete-material")]
+        public IActionResult Delete(Material material) 
+        {
+            _materialRepository.DeleteMaterial(material);
+            return NoContent();
+        }
+    }
+}
