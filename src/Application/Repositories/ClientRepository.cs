@@ -16,7 +16,8 @@ namespace Application.Repositories
 
         public async Task<Client> AddClient(Client client)
         {
-            var clientDto = await DatabaseContext.Clients.AddAsync(client).AsTask().ContinueWith(task => task.Result.Entity);
+            var clientEntry = await DatabaseContext.Clients.AddAsync(client);
+            var clientDto = clientEntry.Entity;
             await DatabaseContext.SaveChangesAsync();
             return clientDto;
         }
