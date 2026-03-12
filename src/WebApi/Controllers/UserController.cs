@@ -22,7 +22,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("get-users")]
-        public async Task<IEnumerable<User>> Get()
+        public async Task<IEnumerable<User>> GetAll()
         {
             return await _userRepository.GetAllUsers();
         }
@@ -34,9 +34,10 @@ namespace WebApi.Controllers
         }
 
         [HttpDelete("delete-user")]
-        public void Delete(User user)
+        public IActionResult Delete(User user) 
         {
             _userRepository.DeleteUser(user);
+            return NoContent();
         }
     }
 }

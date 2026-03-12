@@ -7,6 +7,6 @@ namespace Domain.Repositories
         public Task<User> AddUser(User user);
         public Task<IEnumerable<User>> GetAllUsers();
         public Task<User> UpdateUser(User user);
-        public void DeleteUser(User user);
+        public Task DeleteUser(User user);
     }
 }

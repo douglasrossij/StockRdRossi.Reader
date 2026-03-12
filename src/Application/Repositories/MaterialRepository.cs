@@ -16,7 +16,7 @@ namespace Application.Repositories
 
         public async Task<Material> AddMaterial(Material material)
         {
-            var materialDto = await DatabaseContext.Materials.AddAsync(material).AsTask().ContinueWith(task => task.Result.Entity);
+            var materialDto = (await DatabaseContext.Materials.AddAsync(material)).Entity;
             await DatabaseContext.SaveChangesAsync();
             return materialDto;
         }
@@ -43,10 +43,10 @@ namespace Application.Repositories
             return materialDto;
         }
 
-        public void DeleteMaterial(Material material)
+        public async Task DeleteMaterial(Material material)
         {
-            var materialDto = DatabaseContext.Materials.Remove(material).Entity;
-            DatabaseContext.SaveChangesAsync();
+            DatabaseContext.Materials.Remove(material);
+            await DatabaseContext.SaveChangesAsync();
         }
     }
 }

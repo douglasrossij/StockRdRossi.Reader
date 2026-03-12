@@ -9,6 +9,6 @@ namespace Domain.Repositories
         public Task<IEnumerable<Material?>> GetMaterialsByType(string type);
         public Task<IEnumerable<Material>> GetAllMaterials();
         public Task<Material> UpdateMaterial(Material material);
-        public void DeleteMaterial(Material material);
+        public Task DeleteMaterial(Material material);
     }
 }

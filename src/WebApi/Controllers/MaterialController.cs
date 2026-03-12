@@ -34,7 +34,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("get-materials")]
-        public async Task<IEnumerable<Material>> Get()
+        public async Task<IEnumerable<Material>> GetAll()
         {
             return await _materialRepository.GetAllMaterials();
         }
@@ -46,9 +46,10 @@ namespace WebApi.Controllers
         }
 
         [HttpDelete("delete-material")]
-        public void Delete(Material material)
+        public IActionResult Delete(Material material) 
         {
             _materialRepository.DeleteMaterial(material);
+            return NoContent();
         }
     }
 }

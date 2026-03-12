@@ -8,6 +8,6 @@ namespace Domain.Repositories
         public Task<Employee?> GetEmployeeByName(string name);
         public Task<IEnumerable<Employee>> GetAllEmployees();
         public Task<Employee> UpdateEmployee(Employee employee);
-        public void DeleteEmployee(Employee employee);
+        public Task DeleteEmployee(Employee employee);
     }
 }

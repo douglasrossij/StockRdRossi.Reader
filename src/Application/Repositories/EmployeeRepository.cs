@@ -16,7 +16,7 @@ namespace Application.Repositories
 
         public async Task<Employee> AddEmployee(Employee employee)
         {
-            var employeeDto = await DatabaseContext.Employees.AddAsync(employee).AsTask().ContinueWith(task => task.Result.Entity);
+            var employeeDto = (await DatabaseContext.Employees.AddAsync(employee)).Entity;
             await DatabaseContext.SaveChangesAsync();
             return employeeDto;
         }
@@ -38,10 +38,10 @@ namespace Application.Repositories
             return employeeDto;
         }
 
-        public void DeleteEmployee(Employee employee)
+        public async Task DeleteEmployee(Employee employee)
         {
-            var employeeDto = DatabaseContext.Employees.Remove(employee).Entity;
-            DatabaseContext.SaveChangesAsync();
+            DatabaseContext.Employees.Remove(employee);
+            await DatabaseContext.SaveChangesAsync();
         }
     }
 }

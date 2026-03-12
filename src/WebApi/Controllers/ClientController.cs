@@ -28,7 +28,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("get-clients")]
-        public async Task<IEnumerable<Client>> Get()
+        public async Task<IEnumerable<Client>> GetAll()
         {
             return await _clientRepository.GetAllClients();
         }
@@ -40,9 +40,10 @@ namespace WebApi.Controllers
         }
 
         [HttpDelete("delete-client")]
-        public async Task Delete(Client client)
+        public IActionResult Delete(Client client) 
         {
             _clientRepository.DeleteClient(client);
+            return NoContent();
         }
     }
 }

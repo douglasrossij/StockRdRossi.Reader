@@ -16,8 +16,7 @@ namespace Application.Repositories
 
         public async Task<Client> AddClient(Client client)
         {
-            var clientEntry = await DatabaseContext.Clients.AddAsync(client);
-            var clientDto = clientEntry.Entity;
+            var clientDto = (await DatabaseContext.Clients.AddAsync(client)).Entity;
             await DatabaseContext.SaveChangesAsync();
             return clientDto;
         }
@@ -39,10 +38,10 @@ namespace Application.Repositories
             return clientDto;
         }
 
-        public void DeleteClient(Client client)
+        public async Task DeleteClient(Client client)
         {
-            var clientDto = DatabaseContext.Clients.Remove(client).Entity;
-            DatabaseContext.SaveChangesAsync();
+            DatabaseContext.Clients.Remove(client);
+            await DatabaseContext.SaveChangesAsync();
         }
     }
 }

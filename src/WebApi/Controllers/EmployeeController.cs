@@ -28,7 +28,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("get-employees")]
-        public async Task<IEnumerable<Employee>> Get()
+        public async Task<IEnumerable<Employee>> GetAll()
         {
             return await _employeeRepository.GetAllEmployees();
         }
@@ -40,9 +40,10 @@ namespace WebApi.Controllers
         }
 
         [HttpDelete("delete-employee")]
-        public void Delete(Employee employee)
+        public IActionResult Delete(Employee employee) 
         {
             _employeeRepository.DeleteEmployee(employee);
+            return NoContent();
         }
     }
 }
